@@ -5,8 +5,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './pages/Home'
 import ArticleAll from './pages/articles/Article-all'
 import ArticleAdd from './pages/articles/Article-add'
+import ArticleDetail from './pages/articles/Article-detail'
 
 import MainNavbar from './components/Navbar'
+import MainFooter from './components/Footer'
 
 //? CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,23 +16,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
     return (
         <>
-            <BrowserRouter>
+            <BrowserRouter >
                 <MainNavbar />
                 <Switch>
-                    <Route path="/" exact>
-                        <Home />
-                    </Route>
-                    <Route path="/about" >
-                        About
-                    </Route>
-                    <Route path="/article" >
-                        <ArticleAll/>
-                    </Route>
-                    <Route path="/contact" >
-                        Contact
-                    </Route>
+                    <div style={{minHeight : 'calc(100vh - 140px)'}}>
+                        <Route path="/" exact component={Home} />
+                        <Route path="/about" />
+                        <Route path="/article" component={ArticleAll} />
+                        <Route path="/article-detail" component={ArticleDetail} />
+                        <Route path="/article-add" component={ArticleAdd} />
+                        <Route path="/contact" />
+                    </div>
                 </Switch>
-
+                <MainFooter />
             </BrowserRouter>
         </>
     );
