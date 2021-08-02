@@ -1,41 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Row, Col, Container, Button } from 'react-bootstrap'
 import ArticleCard from '../../components/Article-card'
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 const Home = () => {
-    const article_card_list = [
-        {
-            link: '/',
-            title: '1 Card Title Card Title Card Title',
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-            date: '01/02/2020'
-        },
-        {
-            link: '/',
-            title: '2 Card Title Card Title Card Title',
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-            date: '02/02/2020'
-        },
-        {
-            link: '/',
-            title: '3 Card Title Card Title Card Title',
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-            date: '03/02/2020'
-        },
-        {
-            link: '/',
-            title: '4 Card Title Card Title Card Title',
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-            date: '04/02/2020'
-        },
-        {
-            link: '/',
-            title: '4 Card Title Card Title Card Title',
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-            date: '04/02/2020'
-        },
-    ]
+    const [articleList, setArticleList] = useState([]);
+    
+    useEffect(async () => {
+        axios.get('http://localhost:8000/')
+             .then(resp => {
+                setArticleList(resp.data)
+             })
+    }, [])
 
     return (
         <main className="my-5">
@@ -48,7 +25,7 @@ const Home = () => {
 
                 <Row>
                     {
-                        article_card_list.map(card => {
+                        articleList.map(card => {
                             return (
                                 <Col sm={6} md={4} lg={3} className="mb-4">
                                     <ArticleCard cardDetail={card}/>
