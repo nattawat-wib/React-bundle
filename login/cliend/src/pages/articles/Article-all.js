@@ -8,7 +8,7 @@ const Home = () => {
     const [articleList, setArticleList] = useState([]);
     
     useEffect(async () => {
-        axios.get('http://localhost:8000/')
+        axios.get('http://localhost:8000/article')
              .then(resp => {
                 setArticleList(resp.data)
              })
