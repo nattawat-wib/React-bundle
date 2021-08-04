@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
 
 const articleSchema = new  mongoose.Schema({
-    title: String,
+    title: {
+        type: String,
+        unique: true
+    },
     desc: String,
-    // date: new Date()
+    date: {
+        type: String,
+        default: new Date()
+    }
 })
 
 module.exports = mongoose.model('Article', articleSchema)

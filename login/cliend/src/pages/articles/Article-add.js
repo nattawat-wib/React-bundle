@@ -26,6 +26,7 @@ const ArticleAdd = () => {
         })
 
         alert('post success')
+        // window.location.href('/article')
         setTileInput('')
         setDescInput('')
     }
