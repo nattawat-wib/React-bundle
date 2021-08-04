@@ -14,6 +14,13 @@ exports.getAllArticle = async (req, res) => {
     const allArticle = await Article.find()
 
     if (!allArticle) console.log('cannot find any article')
-    console.log(allArticle)
     res.json(allArticle)
+}
+
+exports.deleteArticle = async (req, res) => {
+    const articleName = req.params.title;
+    console.log(articleName)
+    if (!articleName) return console.log("this article don't exist");
+
+    await Article.findOneAndDelete({title: articleName})
 }

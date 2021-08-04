@@ -3,11 +3,13 @@ import { Row, Col, Container, Button } from 'react-bootstrap'
 import ArticleCard from '../../components/Article-card'
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
     const [articleList, setArticleList] = useState([]);
     
-    useEffect(async () => {
+    useEffect(() => {
         axios.get('http://localhost:8000/article')
              .then(resp => {
                 setArticleList(resp.data)
@@ -19,7 +21,10 @@ const Home = () => {
             <Container className="">
                 <header class="header d-flex justify-content-between">
                     <h3 className="mb-0"> All Article </h3>
-                    <Link to="/article-add" className="btn btn-info text-light" > Add new article </Link>
+                    <Link to="/article-add" className="btn btn-info text-light" >
+                         <FontAwesomeIcon icon={faPlus} className="me-1" />
+                         Add new article
+                          </Link>
                 </header>
                 <hr />
 
