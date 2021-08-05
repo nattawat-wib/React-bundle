@@ -24,3 +24,15 @@ exports.deleteArticle = async (req, res) => {
 
     await Article.findOneAndDelete({title: articleName})
 }
+
+exports.getArticle = async (req, res) => {
+    const articleTitle = req.params.title;
+    const data = await Article.findOne({title : articleTitle})
+    res.json(data);
+}
+
+exports.editArticle = async (req, res) => {
+    const editedArticleTitle = req.params.title;
+    const editedArticleData = req.body;
+    await Article.findOneAndUpdate({title: editedArticleTitle}, editedArticleData)
+}

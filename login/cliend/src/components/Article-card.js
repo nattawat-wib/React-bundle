@@ -20,15 +20,15 @@ const ArticleCard = (props) => {
                 <Card.Title className="text-truncate"> {props.cardDetail.title} </Card.Title>
                 <Card.Text> {props.cardDetail.desc} </Card.Text>
                 <section> {props.cardDetail.date} </section>
-                <Link to="/article-detail" className="btn btn-sm text-light btn-info" > Read more </Link>
+                <Link to={`/article-detail/${props.cardDetail.title}`} className="btn btn-sm text-light btn-info" > Read more </Link>
                 <Button variant="danger" className="mx-2" size="sm" onClick={handleDelete}>
                     <FontAwesomeIcon icon={faTrashAlt} className="me-1" />
                     Delete
                 </Button>
-                <Button variant="success" size="sm">
+                <Link to={`/article-edit/${props.cardDetail.title}`} className="btn btn-sm text-light btn-success" > 
                     <FontAwesomeIcon icon={faEdit} className="me-1" />
                     Edit
-                </Button>
+                </Link>
             </Card.Body>
         </Card>
     )

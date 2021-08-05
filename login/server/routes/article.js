@@ -8,5 +8,7 @@ router.route('/')
 
 router.route('/:title')
     .delete(articleController.deleteArticle)
+    .get(articleController.getArticle)
+    .patch(articleController.editArticle);
 
 module.exports = router;
