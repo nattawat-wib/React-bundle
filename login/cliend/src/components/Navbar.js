@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { Container, Navbar, Nav, Button, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const MainNavbar = () => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
 
     return (
         <>
@@ -30,7 +32,7 @@ const MainNavbar = () => {
                                 <Link to="/article" className="text-decoration-none fw-bold text-light"> Article </Link>
                             </Nav.Link>
                             <Nav.Link>
-                                <Link to="/contact" className="text-decoration-none fw-bold text-light"> Contact </Link>
+                                <Link to="/register" className="text-decoration-none fw-bold text-light"> Register </Link>
                             </Nav.Link>
                             <Button variant="outline-info" className="fw-bold" onClick={handleShow}> Login </Button>
                         </Nav>
@@ -42,7 +44,14 @@ const MainNavbar = () => {
                 <Modal.Header closeButton>
                     <Modal.Title> Login </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+                    <from>
+                        <label> email </label>
+                        <input class="from-control"/>
+                        <label> password </label>
+                        <input class="from-control"/>
+                    </from>
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close

@@ -1,12 +1,12 @@
 const Article = require('../models/Article');
 
-exports.addArticle = (req, res) => {
+exports.addArticle = async (req, res) => {
     const data = req.body;
-    console.log(req.body)
-    if (!data) return console.log('have no data') 
-    console.log(data);
-    Article.create(data)
-    // Article.create({title: 'test title', desc: 'test desc'})
+    if (!data) return console.log('have no data');
+    const isArticleExist = await Article.findOne({title: req.body.title});
+    if(isArticleExist) return (res.json('ชื่อบทความซ้ำ'))
+    Article.create(data);
+
     console.log('add all data to DB');
 }
 

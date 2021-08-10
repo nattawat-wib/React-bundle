@@ -19,7 +19,6 @@ const ArticleDetail = () => {
                 <h1> {articleDetail.title} </h1>
                 <p> {articleDetail.desc} </p>
                 <p> {articleDetail.date} </p>
-                
             </section>
         </main>
     )

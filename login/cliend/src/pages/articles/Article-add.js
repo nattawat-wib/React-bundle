@@ -13,8 +13,11 @@ const ArticleAdd = () => {
     const handleDescInput = (e) => setDescInput(e.target.value);
 
     const handleSubmit = (e) => {
+
         e.preventDefault();
-        console.log(tileInput, descInput)
+
+        if (!tileInput) return alert('กรุณากรอก Title')
+        // if(!descInput) return alert('กรุณากรอก desc')
 
         axios({
             method: 'post',
@@ -24,9 +27,15 @@ const ArticleAdd = () => {
                 desc: descInput
             }
         })
+            .then(resp => {
+                if (resp.data === 'ชื่อบทความซ้ำ') {
+                    alert(resp.data)
+                } else {
+                    alert('เพิ่มบทความสำเร็จ')
+                    window.location.href('/article')
+                }
 
-        alert('post success')
-        // window.location.href('/article')
+            })
         setTileInput('')
         setDescInput('')
     }
@@ -37,11 +46,11 @@ const ArticleAdd = () => {
             <Form autoComplete="off" onSubmit={handleSubmit} >
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label> Title </Form.Label>
-                    <Form.Control type="text" placeholder="Title" onChange={handleTitleInput} value={tileInput}/>
+                    <Form.Control type="text" placeholder="Title" onChange={handleTitleInput} value={tileInput} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label> Description </Form.Label>
-                    <Form.Control as="textarea" rows={3} onChange={handleDescInput} value={descInput}/>
+                    <Form.Control as="textarea" rows={3} onChange={handleDescInput} value={descInput} />
                 </Form.Group>
 
                 <div className="btn-wrapper d-flex justify-content-end">

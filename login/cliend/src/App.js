@@ -7,6 +7,7 @@ import ArticleAll from './pages/articles/Article-all'
 import ArticleAdd from './pages/articles/Article-add'
 import ArticleDetail from './pages/articles/Article-detail'
 import ArticleEdit from './pages/articles/Article-edit'
+import Register from './pages/Register'
 
 import MainNavbar from './components/Navbar'
 import MainFooter from './components/Footer'
@@ -27,7 +28,7 @@ function App() {
                         <Route path="/article-add" component={ArticleAdd} />
                         <Route path="/article-detail/:title" component={ArticleDetail} />
                         <Route path="/article-edit/:title" component={ArticleEdit} />
-                        <Route path="/contact" />
+                        <Route path="/register" component={Register} />
                     </div>
                 </Switch>
                 <MainFooter />
